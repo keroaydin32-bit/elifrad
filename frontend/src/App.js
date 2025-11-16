@@ -29,13 +29,13 @@ function App() {
       <BrowserRouter>
         <Header />
         <div className="flex flex-1">
-          <RightSidebar />
+          <Sidebar />
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
             </Routes>
           </main>
-          <Sidebar />
+          <RightSidebar />
         </div>
         <Footer />
       </BrowserRouter>
