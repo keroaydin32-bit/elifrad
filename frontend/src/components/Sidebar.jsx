@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { categories, products } from '../data/mockData';
-import { Card, CardContent } from './ui/card';
+import { categories } from '../data/mockData';
 
 const Sidebar = () => {
   const [expandedCategories, setExpandedCategories] = useState([]);
@@ -17,7 +16,7 @@ const Sidebar = () => {
   return (
     <aside className="w-64 bg-white border-r min-h-screen">
       {/* Categories Menu */}
-      <div className="p-4 border-b">
+      <div className="p-4">
         <ul className="space-y-1">
           {categories.map((category) => (
             <li key={category.id}>
@@ -48,33 +47,6 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* Featured Product */}
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-4 text-gray-800">Featured Product</h3>
-        <Card className="overflow-hidden">
-          <img 
-            src={products[2].image} 
-            alt={products[2].name}
-            className="w-full h-40 object-cover"
-          />
-          <CardContent className="p-3">
-            <h4 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2">
-              {products[2].name}
-            </h4>
-            <div className="flex items-center gap-2">
-              <div className="flex text-yellow-400 text-xs">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i}>★</span>
-                ))}
-              </div>
-            </div>
-            <p className="text-lg font-bold text-gray-900 mt-2">
-              ${products[2].price.toFixed(2)}
-            </p>
-          </CardContent>
-        </Card>
       </div>
     </aside>
   );
