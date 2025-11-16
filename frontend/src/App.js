@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import RightSidebar from "./components/RightSidebar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
