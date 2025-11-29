@@ -98,8 +98,8 @@ const Home = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex gap-4">
           {/* Left Sidebar - Categories */}
-          <div className="w-72 bg-white rounded shadow">
-            <div className="p-3">
+          <div className="w-72 bg-white rounded shadow h-fit">
+            <div className="py-2">
               <ul className="space-y-0">
                 {categories.map((category) => (
                   <li key={category.id}>
