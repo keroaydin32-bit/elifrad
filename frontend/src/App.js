@@ -29,16 +29,18 @@ function App() {
     <div className="App min-h-screen flex flex-col">
       <BrowserRouter>
         <Header />
-        <div className="flex flex-1">
-          <Sidebar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-            </Routes>
-          </main>
-          <RightSidebar />
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={
+            <div className="flex flex-1">
+              <Sidebar />
+              <main className="flex-1">
+                <ProductDetail />
+              </main>
+              <RightSidebar />
+            </div>
+          } />
+        </Routes>
         <Footer />
       </BrowserRouter>
     </div>
