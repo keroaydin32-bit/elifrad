@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight, ShoppingCart, Eye, GitCompare, Heart } from 'lucide-react';
-import { products, sliderImages, services, blogPosts, brands } from '../data/mockData';
+import { ChevronLeft, ChevronRight, ShoppingCart, Eye, GitCompare, Heart, ChevronDown } from 'lucide-react';
+import { products, sliderImages, services, blogPosts, brands, categories } from '../data/mockData';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import RightSidebar from '../components/RightSidebar';
 
 const Home = () => {
   const navigate = useNavigate();
