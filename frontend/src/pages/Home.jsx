@@ -179,19 +179,19 @@ const Home = () => {
       </div>
 
       {/* Services Section */}
-      <div className="bg-white py-8 border-b">
+      <div className="bg-white py-6 border-y border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
               const IconComponent = require('lucide-react')[service.icon];
               return (
-                <div key={service.id} className="flex items-center gap-4">
-                  <div className="bg-gray-100 p-4 rounded-full">
-                    <IconComponent className="w-8 h-8 text-red-600" />
+                <div key={service.id} className="flex items-start gap-4">
+                  <div className="bg-red-50 p-3 rounded-full flex-shrink-0">
+                    <IconComponent className="w-6 h-6 text-red-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-800 uppercase text-sm">{service.title}</h3>
-                    <p className="text-gray-600 text-sm">{service.description}</p>
+                    <h3 className="font-bold text-gray-900 text-sm mb-1">{service.title}</h3>
+                    <p className="text-gray-600 text-xs">{service.description}</p>
                   </div>
                 </div>
               );
