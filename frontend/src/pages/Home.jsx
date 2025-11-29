@@ -95,20 +95,20 @@ const Home = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section with Sidebar and Slider */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex gap-6">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex gap-4">
           {/* Left Sidebar - Categories */}
-          <div className="w-64 bg-white rounded-lg shadow-md">
-            <div className="p-4">
-              <ul className="space-y-1">
+          <div className="w-72 bg-white rounded shadow">
+            <div className="p-3">
+              <ul className="space-y-0">
                 {categories.map((category) => (
                   <li key={category.id}>
-                    <button className="w-full flex items-center justify-between px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-colors rounded">
-                      <span className="flex items-center gap-2">
-                        <span>{category.icon}</span>
-                        <span>{category.name}</span>
+                    <button className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-100 last:border-0">
+                      <span className="flex items-center gap-3">
+                        <span className="text-base">{category.icon}</span>
+                        <span className="font-medium">{category.name}</span>
                       </span>
-                      {category.hasSubmenu && <ChevronDown className="w-4 h-4" />}
+                      {category.hasSubmenu && <ChevronDown className="w-4 h-4 text-gray-400" />}
                     </button>
                   </li>
                 ))}
@@ -117,7 +117,7 @@ const Home = () => {
           </div>
 
           {/* Center - Hero Slider */}
-          <div className="flex-1 relative h-[400px] bg-black overflow-hidden rounded-lg shadow-md">
+          <div className="flex-1 relative h-[420px] bg-gradient-to-br from-gray-300 to-gray-400 overflow-hidden rounded shadow">
             <div className="relative h-full">
               {sliderImages.map((slide, index) => (
                 <div
@@ -131,13 +131,13 @@ const Home = () => {
                     alt={slide.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center">
-                    <div className="px-12">
-                      <div className="max-w-lg">
-                        <p className="text-red-500 text-sm uppercase mb-2">{slide.subtitle}</p>
-                        <h2 className="text-white text-4xl font-bold mb-3">{slide.title}</h2>
-                        <p className="text-white text-base mb-5">{slide.description}</p>
-                        <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-8 py-3 text-base uppercase">
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex items-center">
+                    <div className="px-16">
+                      <div className="max-w-xl">
+                        <p className="text-white text-xs uppercase tracking-wider mb-3 font-semibold">{slide.subtitle}</p>
+                        <h2 className="text-white text-5xl font-bold mb-4 leading-tight">{slide.title}</h2>
+                        <p className="text-white text-sm mb-6 leading-relaxed max-w-md">{slide.description}</p>
+                        <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 text-sm uppercase tracking-wide rounded shadow-lg transition-all hover:shadow-xl">
                           {slide.buttonText}
                         </Button>
                       </div>
@@ -149,24 +149,24 @@ const Home = () => {
             
             <button 
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-100 p-2 rounded-full transition-all z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all z-10 shadow"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-5 h-5 text-gray-800" />
             </button>
             <button 
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-50 hover:bg-opacity-100 p-2 rounded-full transition-all z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full transition-all z-10 shadow"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-5 h-5 text-gray-800" />
             </button>
             
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
               {sliderImages.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentSlide ? 'bg-red-600 w-8' : 'bg-white bg-opacity-50'
+                  className={`h-2 rounded-full transition-all ${
+                    index === currentSlide ? 'bg-red-600 w-8' : 'bg-white/60 w-2'
                   }`}
                 />
               ))}
