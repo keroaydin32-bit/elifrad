@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ShoppingCart, Eye, GitCompare, Heart } from 'lucide-react';
 import { products, sliderImages, services, blogPosts, brands } from '../data/mockData';
 import { Button } from '../components/ui/button';
@@ -6,6 +7,7 @@ import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeTab, setActiveTab] = useState('featured');
   const [hoveredProduct, setHoveredProduct] = useState(null);
