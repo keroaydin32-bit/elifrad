@@ -22,9 +22,10 @@ const Home = () => {
 
   const ProductCard = ({ product, index }) => (
     <div 
-      className="group relative bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-lg"
+      className="group relative bg-white border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-lg cursor-pointer"
       onMouseEnter={() => setHoveredProduct(index)}
       onMouseLeave={() => setHoveredProduct(null)}
+      onClick={() => navigate(`/product/${product.id}`)}
     >
       <div className="relative overflow-hidden aspect-square">
         <img 
@@ -46,19 +47,28 @@ const Home = () => {
           </Badge>
         )}
         <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors">
+          <button 
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors"
+          >
             <Heart className="w-4 h-4" />
           </button>
-          <button className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors">
+          <button 
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors"
+          >
             <GitCompare className="w-4 h-4" />
           </button>
-          <button className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors">
+          <button 
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-2 rounded-full hover:bg-red-600 hover:text-white transition-colors"
+          >
             <Eye className="w-4 h-4" />
           </button>
         </div>
       </div>
       <div className="p-4">
-        <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 hover:text-red-600 transition-colors cursor-pointer">
+        <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 hover:text-red-600 transition-colors">
           {product.name}
         </h3>
         <div className="flex items-center justify-between mb-3">
@@ -70,6 +80,7 @@ const Home = () => {
           </div>
         </div>
         <Button 
+          onClick={(e) => e.stopPropagation()}
           className="w-full bg-red-600 hover:bg-red-700 text-white transition-colors"
           size="sm"
         >
