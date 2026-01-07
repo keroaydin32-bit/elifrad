@@ -5,7 +5,6 @@ import { products, sliderImages, services, blogPosts, brands, categories } from 
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
-import RightSidebar from '../components/RightSidebar';
 
 const Home = () => {
   const navigate = useNavigate();
