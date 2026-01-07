@@ -180,7 +180,7 @@ const Home = () => {
 
       {/* Services Section */}
       <div className="bg-white py-6 border-y border-gray-200">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
               const IconComponent = require('lucide-react')[service.icon];
