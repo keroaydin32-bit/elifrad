@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, User, ShoppingCart, Menu } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Header = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [cartCount] = useState(3);
 
