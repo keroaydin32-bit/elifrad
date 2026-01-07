@@ -31,7 +31,10 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between gap-8">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div 
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate('/')}
+          >
             <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
               <div className="w-6 h-6 border-4 border-white rounded-full"></div>
             </div>
