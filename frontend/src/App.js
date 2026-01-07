@@ -30,7 +30,15 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+            <div className="flex flex-1">
+              <Sidebar />
+              <main className="flex-1">
+                <Home />
+              </main>
+              <RightSidebar />
+            </div>
+          } />
           <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
         <Footer />
