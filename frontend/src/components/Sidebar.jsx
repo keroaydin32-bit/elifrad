@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { categories } from '../data/mockData';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [expandedCategories, setExpandedCategories] = useState([]);
 
   const toggleCategory = (categoryId) => {
