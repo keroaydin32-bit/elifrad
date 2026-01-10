@@ -103,7 +103,10 @@ const Home = () => {
               <ul className="space-y-0">
                 {categories.map((category) => (
                   <li key={category.id}>
-                    <button className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-100 last:border-0">
+                    <button 
+                      onClick={() => navigate(`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-800 hover:bg-gray-50 hover:text-red-600 transition-colors border-b border-gray-100 last:border-0"
+                    >
                       <span className="flex items-center gap-3">
                         <span className="text-base">{category.icon}</span>
                         <span className="font-medium">{category.name}</span>
