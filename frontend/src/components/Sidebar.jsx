@@ -23,7 +23,13 @@ const Sidebar = () => {
           {categories.map((category) => (
             <li key={category.id}>
               <button
-                onClick={() => category.hasSubmenu && toggleCategory(category.id)}
+                onClick={() => {
+                  if (category.hasSubmenu) {
+                    toggleCategory(category.id);
+                  } else {
+                    navigate(`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`);
+                  }
+                }}
                 className="w-full flex items-center justify-between px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600 transition-colors rounded"
               >
                 <span className="flex items-center gap-2">
