@@ -72,7 +72,10 @@ const Header = () => {
               <User className="w-5 h-5" />
               <span className="text-sm font-medium">Mein Konto</span>
             </button>
-            <button className="flex items-center gap-2 hover:text-red-600 transition-colors relative">
+            <button 
+              onClick={() => navigate('/cart')}
+              className="flex items-center gap-2 hover:text-red-600 transition-colors relative"
+            >
               <ShoppingCart className="w-5 h-5" />
               <span className="text-sm font-medium">0,00 $</span>
               {cartCount > 0 && (
