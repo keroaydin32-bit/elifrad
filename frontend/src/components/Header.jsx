@@ -106,7 +106,10 @@ const Header = () => {
                 <a href="#" className="px-4 py-6 hover:bg-red-700 transition-colors text-sm font-medium">STORES</a>
               </nav>
             </div>
-            <Button className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-6 rounded-none text-sm font-medium">
+            <Button 
+              onClick={() => navigate('/special-offers')}
+              className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-6 rounded-none text-sm font-medium"
+            >
               🎁 SPECIAL OFFERS!
             </Button>
           </div>
