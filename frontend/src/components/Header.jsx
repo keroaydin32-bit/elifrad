@@ -68,7 +68,10 @@ const Header = () => {
 
           {/* User Actions */}
           <div className="flex items-center gap-6">
-            <button className="flex items-center gap-2 hover:text-red-600 transition-colors">
+            <button 
+              onClick={() => navigate('/account')}
+              className="flex items-center gap-2 hover:text-red-600 transition-colors"
+            >
               <User className="w-5 h-5" />
               <span className="text-sm font-medium">Mein Konto</span>
             </button>
