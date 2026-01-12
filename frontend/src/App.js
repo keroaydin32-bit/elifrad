@@ -39,6 +39,7 @@ function App() {
           <Route path="/category/:categoryName" element={<CategoryPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/special-offers" element={<SpecialOffersPage />} />
+          <Route path="/account" element={<AccountPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
