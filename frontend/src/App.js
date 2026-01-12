@@ -11,6 +11,7 @@ import ProductDetail from "./pages/ProductDetail";
 import CategoryPage from "./pages/CategoryPage";
 import CartPage from "./pages/CartPage";
 import SpecialOffersPage from "./pages/SpecialOffersPage";
+import AccountPage from "./pages/AccountPage";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
