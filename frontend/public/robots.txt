@@ -1,0 +1,10 @@
+# General directive for all bots
+User-agent: *
+Allow: /
+
+# Block admin paths
+Disallow: /admin
+Disallow: /api
+
+# Sitemap location
+Sitemap: https://elifrad.com/sitemap.xml

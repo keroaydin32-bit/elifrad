@@ -1,15 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
+html, body, #root {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    position: relative;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    min-height: 100%;
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
 }
 
 code {
@@ -45,25 +64,27 @@ code {
         --chart-5: 27 87% 67%;
         --radius: 0.5rem;
     }
+
     .dark {
-        --background: 0 0% 3.9%;
+        --background: 0 0% 2%;
+        /* Very dark, almost black (#050505) */
         --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
+        --card: 0 0% 4%;
         --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
+        --popover: 0 0% 4%;
         --popover-foreground: 0 0% 98%;
         --primary: 0 0% 98%;
         --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
+        --secondary: 0 0% 10%;
         --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
+        --muted: 0 0% 10%;
         --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
+        --accent: 0 0% 10%;
         --accent-foreground: 0 0% 98%;
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
+        --border: 0 0% 12%;
+        --input: 0 0% 12%;
         --ring: 0 0% 83.1%;
         --chart-1: 220 70% 50%;
         --chart-2: 160 60% 45%;
@@ -76,7 +97,9 @@ code {
 @layer base {
     * {
         @apply border-border;
+        box-sizing: border-box;
     }
+
     body {
         @apply bg-background text-foreground;
     }
@@ -87,7 +110,7 @@ code {
         display: contents !important;
     }
 
-    [data-debug-wrapper="true"] > * {
+    [data-debug-wrapper="true"]>* {
         margin-left: inherit;
         margin-right: inherit;
         margin-top: inherit;
@@ -112,4 +135,287 @@ code {
         border-top-color: inherit;
         border-bottom-color: inherit;
     }
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 120s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Restore Bullets and List Styles for CMS Content */
+.prose {
+    color: inherit;
+    max-width: none;
+}
+
+.prose ul {
+    list-style-type: disc !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+    padding-left: 1.625em !important;
+}
+
+.prose ol {
+    list-style-type: decimal !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+    padding-left: 1.625em !important;
+}
+
+.prose li {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    display: list-item !important;
+}
+
+.prose p {
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.prose table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+}
+
+.prose ul {
+    list-style-type: disc !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+    padding-left: 1.625em !important;
+}
+
+.prose ol {
+    list-style-type: decimal !important;
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+    padding-left: 1.625em !important;
+}
+
+.prose li {
+    margin-top: 0.5em !important;
+    margin-bottom: 0.5em !important;
+    display: list-item !important;
+}
+
+.prose p {
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.3;
+}
+
+.prose a {
+    color: #ef4444;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Default to Roboto Condensed for description area, allowing overrides */
+.product-description-area {
+    font-family: 'Roboto Condensed', sans-serif !important;
+    overflow-x: hidden;
+}
+
+.product-description-area * {
+    font-family: 'Roboto Condensed', sans-serif !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+.product-description-area table {
+    width: 100% !important;
+    display: block;
+    overflow-x: auto;
+    white-space: normal;
+}
+
+.product-description-area img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.product-description-area pre,
+.product-description-area code {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+}
+
+/* Force inline text colors from WYSIWYG editors to be overridden in dark mode */
+.dark .product-description-area,
+.dark .product-description-area * {
+    color: #f3f4f6 !important;
+    /* React/Tailwind gray-100 */
+    background-color: transparent !important;
+}
+
+.dark .product-description-area strong,
+.dark .product-description-area b,
+.dark .product-description-area h1,
+.dark .product-description-area h2,
+.dark .product-description-area h3,
+.dark .product-description-area h4,
+.dark .product-description-area h5,
+.dark .product-description-area h6 {
+    color: #ffffff !important;
+}
+
+.dark .product-description-area a,
+.dark .product-description-area a * {
+    color: #ef4444 !important;
+}
+
+.dark .product-description-area button,
+.dark .product-description-area button * {
+    color: inherit !important;
+}
+
+/* Hide Emergent Badge */
+#emergent-badge,
+[id*="emergent-badge"],
+a[href*="emergent.sh"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Ensure Jodit Editor popups work inside Radix UI Dialogs 
+   Radix applies pointer-events: none to the body. We must override this. */
+body[style*="pointer-events: none"] {
+    pointer-events: auto !important;
+}
+
+body[style*="pointer-events"] {
+    pointer-events: auto !important;
+}
+
+[class^="jodit"],
+[class*=" jodit"],
+[class*="jodit-"] {
+    pointer-events: auto !important;
+}
+
+.jodit-popup,
+.jodit-popup__content,
+.jodit-popup-box,
+.jodit-dialog,
+.jodit-toolbar-popup,
+.jodit-ui-popup,
+.jodit-color-picker,
+.jodit-toolbar-collection,
+.jodit-list,
+.jodit-list__item,
+.jodit-popup_visible {
+    pointer-events: auto !important;
+    z-index: 2147483647 !important;
+}
+/* Jodit Dark Mode Overrides */
+.dark .jodit-dark-container .jodit-container {
+    background-color: #111 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.dark .jodit-dark-container .jodit-toolbar__box {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .jodit-dark-container .jodit-toolbar-button__button {
+    color: #ccc !important;
+}
+
+.dark .jodit-dark-container .jodit-toolbar-button__button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.dark .jodit-dark-container .jodit-wysiwyg {
+    background-color: #0a0a0a !important;
+    color: #eee !important;
+}
+
+.dark .jodit-dark-container .jodit-status-bar {
+    background-color: #1a1a1a !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #777 !important;
+}
+
+/* Global Jodit Popup / Modal Dark Overrides */
+.dark .jodit-popup,
+.dark .jodit-dialog__box,
+.dark .jodit-ui-popup {
+    background-color: #111 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark .jodit-ui-input__input,
+.dark .jodit-ui-select__select,
+.dark .jodit-ui-textarea__textarea {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.dark .jodit-list__item:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .jodit-toolbar-button_active .jodit-toolbar-button__button {
+    background-color: rgba(239, 68, 68, 0.2) !important;
+    color: #ef4444 !important;
 }
