@@ -546,8 +546,8 @@ export const StoreProvider = ({ children }) => {
             console.log(`💾 [STORE] Starting High-Reliability Shop Settings Sync...`);
 
             // Use direct FETCH instead of supabase.upsert to prevent "Lock was stolen" errors
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://hhnrosczgggxelnbrhlk.supabase.co';
-            const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+            const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
 
             const response = await fetch(`${baseUrl}/rest/v1/shop_settings?id=eq.1`, {
                 method: 'PATCH',
