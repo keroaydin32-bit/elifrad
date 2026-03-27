@@ -158,9 +158,7 @@ const AppContent = () => {
           <Route path="/legal/:docId" element={<LegalPage />} />
 
           {/* 🔒 Protected Admin Routes */}
-          <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
-          <Route path="/admin/orders" element={<AdminGuard><AdminOrders /></AdminGuard>} />
-          <Route path="/admin/products" element={<AdminGuard><AdminProducts /></AdminGuard>} />
+          <Route path="/admin/*" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
           <Route path="/admin/customer/:id" element={<AdminGuard><CustomerDetail /></AdminGuard>} />
           <Route path="/admin/order/:id" element={<AdminGuard><OrderDetailPage /></AdminGuard>} />
         </Routes>

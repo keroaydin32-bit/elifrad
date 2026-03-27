@@ -864,8 +864,8 @@ const AdminDashboard = () => {
         const tid = toast.loading('Kargo ücretleri kaydediliyor...');
 
         try {
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-            const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+            const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
 
             const { data: sessionData } = await supabase.auth.getSession();
             const sessionToken = sessionData?.session?.access_token || anonKey;
@@ -1247,10 +1247,10 @@ const AdminDashboard = () => {
 
     const menuItems = [
         { id: 'dashboard', label: 'Übersicht', icon: LayoutDashboard },
-        { id: 'orders', label: 'Bestellungen', icon: ShoppingCart, action: () => navigate('/admin/orders'), badge: orders.length.toString() },
+        { id: 'orders', label: 'Bestellungen', icon: ShoppingCart, badge: orders.length.toString() },
         { id: 'invoices', label: 'Rechnungen', icon: FileText },
         { id: 'customers', label: 'Kunden', icon: Users },
-        { id: 'products', label: 'Kategorien / Artikel', icon: Package, action: () => navigate('/admin/products') },
+        { id: 'products', label: 'Kategorien / Artikel', icon: Package },
         { id: 'warehouse', label: 'Depo / Inventur', icon: Warehouse },
         { id: 'manufacturers', label: 'Hersteller', icon: Tag },
         { id: 'modules', label: 'Module', icon: Box },
@@ -1582,8 +1582,8 @@ const AdminDashboard = () => {
 
         const tid = toast.loading('Produkt wird gelöscht...');
         try {
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-            const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+            const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
 
             const { data: sessionData } = await supabase.auth.getSession();
             const sessionToken = sessionData?.session?.access_token || anonKey;
@@ -1730,11 +1730,11 @@ const AdminDashboard = () => {
                 } catch (e) { }
             }
             
-            const accessToken = currentSession?.access_token || process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const accessToken = currentSession?.access_token || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
             console.log("🎟️ Token retrieved.");
 
             // 2. Perform Save via Network-Stable Fetch
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
             const targetUrl = isUpdate 
                 ? `${baseUrl}/rest/v1/products?id=eq.${savedId}`
                 : `${baseUrl}/rest/v1/products`;
@@ -2219,8 +2219,8 @@ const AdminDashboard = () => {
 
                     // RAW FETCH UPLOAD (Safari/Network Stability Mode)
                     const uploadPromise = async () => {
-                        const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-                        const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+                        const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+                        const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
                         const url = `${baseUrl}/storage/v1/object/product-images/${filePath}`;
 
                         const res = await fetch(url, {
@@ -8255,7 +8255,7 @@ const AdminDashboard = () => {
                                 <Printer className="w-4 h-4 mr-2" />
                                 Bericht exportieren
                             </Button>
-                            <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={() => navigate('/admin/orders')}>
+                            <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={() => handleTabChange('Bestellungen')}>
                                 <Plus className="w-4 h-4 mr-2" />
                                 Alle Bestellungen
                             </Button>
