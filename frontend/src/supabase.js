@@ -1,51 +1,6 @@
-import { createClient } from '@supabase/supabase-js'
-import { supabaseStorage } from './lib/storage'
+import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
-const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY
+const supabaseUrl = "https://hhnrosczgggxelnbrhlk.supabase.co"; 
+const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s";
 
-if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Supabase URL or Anon Key is missing. Check your .env file.')
-}
-
-/**
- * In-memory mutex lock — Web Locks API'yi tamamen bypass eder.
- * "Lock broken by another request with the 'steal' option" hatasını önler.
- * Her anahtar için bir Promise zinciri tutar; işlemler sıraya girer.
- */
-const memoryLocks = {}
-
-function memoryLock(name, acquireTimeout, fn) {
-    if (!memoryLocks[name]) {
-        memoryLocks[name] = Promise.resolve()
-    }
-
-    const run = memoryLocks[name].then(() => fn())
-    // Hata olsa bile zinciri bozmamak için catch ekle
-    memoryLocks[name] = run.catch(() => {})
-    return run
-}
-
-// Singleton pattern — tek bir client instance garantilenir
-let _supabaseInstance = null
-
-function getSupabaseClient() {
-    if (_supabaseInstance) return _supabaseInstance
-
-    _supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
-        auth: {
-            storage: supabaseStorage,
-            persistSession: true,
-            storageKey: 'electrive-auth-token',
-            autoRefreshToken: true,
-            detectSessionInUrl: true,
-            flowType: 'pkce',
-            lock: memoryLock,
-        }
-    })
-
-    return _supabaseInstance
-}
-
-export const supabase = getSupabaseClient()
-
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

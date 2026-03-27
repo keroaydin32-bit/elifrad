@@ -10,6 +10,8 @@ import CartPage from "./pages/CartPage";
 import SpecialOffersPage from "./pages/SpecialOffersPage";
 import AccountPage from "./pages/AccountPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminOrders from "./pages/AdminOrders";
+import AdminProducts from "./pages/AdminProducts";
 import CustomerDetail from "./pages/CustomerDetail";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import BoschCalculator from "./pages/BoschCalculator";
@@ -136,7 +138,7 @@ const AppContent = () => {
   return (
     <div className="App min-h-screen flex flex-col font-sans overflow-x-hidden w-full max-w-full relative">
       {!isAdminRoute && <Header />}
-      <main className="flex-1 w-full overflow-x-hidden relative">
+      <main className="flex-1 w-full overflow-x-hidden relative text-gray-900 dark:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:slug" element={<ProductDetail />} />
@@ -156,7 +158,9 @@ const AppContent = () => {
           <Route path="/legal/:docId" element={<LegalPage />} />
 
           {/* 🔒 Protected Admin Routes */}
-          <Route path="/admin/*" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
+          <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
+          <Route path="/admin/orders" element={<AdminGuard><AdminOrders /></AdminGuard>} />
+          <Route path="/admin/products" element={<AdminGuard><AdminProducts /></AdminGuard>} />
           <Route path="/admin/customer/:id" element={<AdminGuard><CustomerDetail /></AdminGuard>} />
           <Route path="/admin/order/:id" element={<AdminGuard><OrderDetailPage /></AdminGuard>} />
         </Routes>
