@@ -1247,10 +1247,10 @@ const AdminDashboard = () => {
 
     const menuItems = [
         { id: 'dashboard', label: 'Übersicht', icon: LayoutDashboard },
-        { id: 'orders', label: 'Bestellungen', icon: ShoppingCart, badge: orders.length.toString() },
+        { id: 'orders', label: 'Bestellungen', icon: ShoppingCart, action: () => navigate('/admin/orders'), badge: orders.length.toString() },
         { id: 'invoices', label: 'Rechnungen', icon: FileText },
         { id: 'customers', label: 'Kunden', icon: Users },
-        { id: 'products', label: 'Kategorien / Artikel', icon: Package },
+        { id: 'products', label: 'Kategorien / Artikel', icon: Package, action: () => navigate('/admin/products') },
         { id: 'warehouse', label: 'Depo / Inventur', icon: Warehouse },
         { id: 'manufacturers', label: 'Hersteller', icon: Tag },
         { id: 'modules', label: 'Module', icon: Box },
@@ -8255,7 +8255,7 @@ const AdminDashboard = () => {
                                 <Printer className="w-4 h-4 mr-2" />
                                 Bericht exportieren
                             </Button>
-                            <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={() => handleTabChange('Bestellungen')}>
+                            <Button className="bg-red-600 hover:bg-red-700 text-white" onClick={() => navigate('/admin/orders')}>
                                 <Plus className="w-4 h-4 mr-2" />
                                 Alle Bestellungen
                             </Button>
