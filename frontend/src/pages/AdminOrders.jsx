@@ -16,7 +16,7 @@ const AdminOrders = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("orders")
-      .select("*, customers(name, email)")
+      .select("*")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -80,8 +80,8 @@ const AdminOrders = () => {
               <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors border-b border-gray-100 dark:border-white/5">
                 <td className="py-4 px-2 text-xs font-mono text-gray-500">#{order.id.slice(0, 8)}</td>
                 <td className="py-4 px-2">
-                  <div className="text-sm font-bold dark:text-white">{order.customers?.name || "Misafir"}</div>
-                  <div className="text-[11px] text-gray-400 font-medium">{order.customers?.email}</div>
+                  <div className="text-sm font-bold dark:text-white">{order.customer_name || "Misafir"}</div>
+                  <div className="text-[11px] text-gray-400 font-medium">{order.customer_email}</div>
                 </td>
                 <td className="py-4 px-2 font-black dark:text-white">€{order.total_amount?.toFixed(2)}</td>
                 <td className="py-4 px-2 text-sm">

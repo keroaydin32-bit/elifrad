@@ -1,13 +1,33 @@
-import React, { useState, useMemo } from "react";
-import { Search, Plus, Trash2, Edit3, Package, Layers, Tag, Eye } from "lucide-react";
+import React, { useState, useMemo, useEffect } from "react";
+import { Search, Plus, Trash2, Edit3, Package, Layers, Tag, Eye, CheckCircle, XCircle } from "lucide-react";
 import { useStore } from "../context/StoreContext";
 import { supabase } from "../supabase";
 import { toast } from "sonner";
 import { Button } from "../components/ui/button";
 
 const AdminProducts = () => {
-  const { products, loading, refreshData } = useStore();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+
+  async function fetchProducts() {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("products")
+      .select("*") // Selecting all fields from the products table
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      toast.error("Ürünler yüklenemedi.");
+    } else {
+      setProducts(data || []);
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   async function toggleProductStatus(id, isActive) {
     const { error } = await supabase
@@ -16,7 +36,7 @@ const AdminProducts = () => {
       .eq("id", id);
     if (!error) {
       toast.success("Ürün durumu güncellendi");
-      refreshData(true);
+      fetchProducts(); // Refresh data after update
     }
   }
 
@@ -26,7 +46,7 @@ const AdminProducts = () => {
       const { error } = await supabase.from("products").delete().eq("id", id);
       if (!error) {
         toast.success("Ürün silindi");
-        refreshData(true);
+        fetchProducts(); // Refresh data after deletion
       }
     }
   }
@@ -82,8 +102,10 @@ const AdminProducts = () => {
                   </div>
                 </td>
                 <td className="py-4 px-2">
-                  <div className="text-sm font-bold dark:text-white line-clamp-1">{p.name}</div>
-                  <div className="text-[10px] text-gray-400 font-mono">{p.sku || "KOD_YOK"}</div>
+                  <div className="flex-1">
+                    <div className="text-sm font-bold dark:text-white line-clamp-1">{p.name}</div>
+                    <div className="text-xs text-gray-400">{p.category_id ? 'Kategorili' : 'Kategorisiz'}</div>
+                  </div>
                 </td>
                 <td className="py-4 px-2 font-black dark:text-white">€{p.price?.toFixed(2)}</td>
                 <td className="py-4 px-2">
