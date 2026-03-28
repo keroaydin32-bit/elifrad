@@ -106,8 +106,8 @@ const AccountPage = () => {
     try {
       setEditFormData(customer);
 
-      const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-      const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+      const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+      const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
 
       const fetchDirect = async (path) => {
         const response = await fetch(`${baseUrl}/rest/v1/${path}`, {
@@ -230,8 +230,8 @@ const AccountPage = () => {
     setSelectedOrder(order);
     setIsItemsLoading(true);
     try {
-      const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-      const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+      const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+      const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
 
       const response = await fetch(`${baseUrl}/rest/v1/order_items?order_id=eq.${order.id}&select=*,products(*)`, {
         headers: {
