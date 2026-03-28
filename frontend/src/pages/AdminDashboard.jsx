@@ -764,7 +764,6 @@ const AdminDashboard = () => {
     };
 
     const fetchOnlineUsers = async () => {
-        const { supabase } = await import('../supabase');
         if (!supabase) return;
         setOnlineLoading(true);
         try {

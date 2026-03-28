@@ -26,6 +26,8 @@ export const StoreProvider = ({ children }) => {
     });
     const [dataLoading, setDataLoading] = useState(true);
     const [isSyncing, setIsSyncing] = useState(false);
+    const dataLoadingRef = useRef(true);
+    const syncInProgressRef = useRef(false);
     const isFetchingInitial = useRef(false);
 
     const isDealer = customer?.customer_group === 'Händler';
