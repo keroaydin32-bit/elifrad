@@ -107,21 +107,26 @@ export const StoreProvider = ({ children }) => {
                 price: item.price
             }));
 
-            // We use a simple fetch to get IP if possible, or skip it
+            // Get IP and Geo data (Country)
             let ip = 'Unknown';
+            let countryCode = 'UN';
             try {
-                // Using a small delay to not block initial load
-                const ipRes = await fetch('https://api.ipify.org?format=json').then(res => res.json());
-                ip = ipRes.ip;
-            } catch (e) { /* ignore ip fetch errors */ }
+                // Using ipapi.co for free Geo IP lookup
+                const geoRes = await fetch('https://ipapi.co/json/').then(res => res.json());
+                if (geoRes && geoRes.ip) {
+                    ip = geoRes.ip;
+                    countryCode = geoRes.country_code || 'UN';
+                }
+            } catch (e) { /* silent fail */ }
 
-            if (isSyncing || syncInProgressRef.current) return; // Don't run presence if we are saving important settings
+            if (isSyncing || syncInProgressRef.current) return;
             
             await supabase.from('online_presence').upsert({
                 session_id: sessionId,
                 user_id: customer?.auth_id || null,
                 user_name: customer?.name || 'Guest',
                 ip_address: ip,
+                country_code: countryCode,
                 last_url: currentPath,
                 last_activity: new Date().toISOString(),
                 cart_items_count: cartCount,

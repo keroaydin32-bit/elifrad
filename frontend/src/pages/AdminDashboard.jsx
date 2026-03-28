@@ -5770,7 +5770,17 @@ const AdminDashboard = () => {
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex flex-col">
                                                     <span className="text-xs font-black text-gray-900">{formatTime(user.last_activity)}</span>
-                                                    <span className="text-[10px] text-gray-400 font-bold uppercase">{user.ip_address || '---.---.---.---'}</span>
+                                                    <div className="flex items-center gap-1.5 mt-0.5">
+                                                        {user.country_code ? (
+                                                            <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 rounded text-[10px] font-bold text-gray-600 border border-gray-200">
+                                                                <span>{user.country_code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))}</span>
+                                                                <span>{user.country_code}</span>
+                                                            </div>
+                                                        ) : (
+                                                            <span className="text-[10px] text-gray-400 font-bold uppercase">UN</span>
+                                                        )}
+                                                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">{user.ip_address || '---.---.---.---'}</span>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4">
