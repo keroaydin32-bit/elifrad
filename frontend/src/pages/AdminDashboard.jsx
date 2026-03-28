@@ -5754,7 +5754,8 @@ const AdminDashboard = () => {
                             <table className="w-full border-collapse sticky-header">
                                 <thead className="sticky top-0 z-10">
                                     <tr className="bg-gray-900 border-b border-gray-800">
-                                        <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">online</th>
+                                        <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest uppercase">online</th>
+                                        <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest pl-4">Land</th>
                                         <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Letzte URL</th>
                                         <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Name</th>
                                         <th className="px-6 py-4 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest pl-10 border-l border-white/10">Warenkorb</th>
@@ -5770,18 +5771,18 @@ const AdminDashboard = () => {
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex flex-col">
                                                     <span className="text-xs font-black text-gray-900">{formatTime(user.last_activity)}</span>
-                                                    <div className="flex items-center gap-1.5 mt-0.5">
-                                                        {user.country_code ? (
-                                                            <div className="flex items-center gap-1 px-1.5 py-0.5 bg-gray-100 rounded text-[10px] font-bold text-gray-600 border border-gray-200">
-                                                                <span>{user.country_code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))}</span>
-                                                                <span>{user.country_code}</span>
-                                                            </div>
-                                                        ) : (
-                                                            <span className="text-[10px] text-gray-400 font-bold uppercase">UN</span>
-                                                        )}
-                                                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">{user.ip_address || '---.---.---.---'}</span>
-                                                    </div>
+                                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">{user.ip_address || '---.---.---.---'}</span>
                                                 </div>
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap pl-4">
+                                                {user.country_code ? (
+                                                    <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded-lg border border-gray-100 shadow-sm w-fit">
+                                                        <span className="text-sm shadow-sm">{user.country_code.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397))}</span>
+                                                        <span className="text-[11px] font-black text-gray-600 tracking-wider">{user.country_code.toUpperCase()}</span>
+                                                    </div>
+                                                ) : (
+                                                    <span className="text-[10px] text-gray-400 font-bold uppercase py-1 px-2 bg-gray-50 rounded-lg">??</span>
+                                                )}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div className="flex flex-col gap-0.5 max-w-[180px]">

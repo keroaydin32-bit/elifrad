@@ -107,17 +107,22 @@ export const StoreProvider = ({ children }) => {
                 price: item.price
             }));
 
-            // Get IP and Geo data (Country)
+            // Get IP and Geo data (Country) via ipwho.is (more reliable)
             let ip = 'Unknown';
             let countryCode = 'UN';
             try {
-                // Using ipapi.co for free Geo IP lookup
-                const geoRes = await fetch('https://ipapi.co/json/').then(res => res.json());
-                if (geoRes && geoRes.ip) {
+                const geoRes = await fetch('https://ipwho.is/').then(res => res.json());
+                if (geoRes && geoRes.success) {
                     ip = geoRes.ip;
                     countryCode = geoRes.country_code || 'UN';
+                } else {
+                    // Fallback to ipify if ipwho.is fails
+                    const ipRes = await fetch('https://api.ipify.org?format=json').then(res => res.json());
+                    ip = ipRes.ip || 'Unknown';
                 }
-            } catch (e) { /* silent fail */ }
+            } catch (e) {
+                console.warn("Geo IP fetch failed, using fallback...");
+            }
 
             if (isSyncing || syncInProgressRef.current) return;
             
