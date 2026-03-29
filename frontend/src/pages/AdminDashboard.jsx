@@ -87,9 +87,21 @@ const quillStyles = `
     font-family: inherit;
     line-height: 1.6;
     padding: 2rem !important;
-    font-size: 1.35rem !important;
+    font-size: 1rem !important;
     color: #000 !important;
   }
+  .ql-editor * {
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+  .ql-editor h1, .ql-editor h2, .ql-editor h3 {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: bold !important;
+  }
+  .ql-editor h1 { font-size: 1.5rem !important; }
+  .ql-editor h2 { font-size: 1.25rem !important; }
+  .ql-editor h3 { font-size: 1.1rem !important; }
   .dark .ql-editor {
     color: #fff !important;
   }
@@ -661,11 +673,11 @@ const AdminDashboard = () => {
             const fileExt = file.name.split('.').pop();
             const filePath = `shop/payment-${Date.now()}.${fileExt}`;
 
-            const res = await fetch(`${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/product-images/${filePath}`, {
+            const res = await fetch(`${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/product-images/${filePath}`, {
                 method: 'POST',
                 headers: {
-                    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s'}`,
                     'Content-Type': file.type || 'application/octet-stream',
                     'x-upsert': 'false'
                 },
@@ -677,7 +689,7 @@ const AdminDashboard = () => {
                 throw new Error(errData.message || `Upload fail (${res.status})`);
             }
 
-            const publicUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/public/product-images/${filePath}`;
+            const publicUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/public/product-images/${filePath}`;
 
             setSettingsForm(prev => {
                 const newIcons = (prev.paymentIcons || []).map(icon =>
@@ -1009,11 +1021,11 @@ const AdminDashboard = () => {
             const fileExt = file.name.split('.').pop();
             const filePath = `shop/logo-${Date.now()}.${fileExt}`;
 
-            const res = await fetch(`${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/product-images/${filePath}`, {
+            const res = await fetch(`${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/product-images/${filePath}`, {
                 method: 'POST',
                 headers: {
-                    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s'}`,
                     'Content-Type': file.type || 'application/octet-stream',
                     'x-upsert': 'false'
                 },
@@ -1025,7 +1037,7 @@ const AdminDashboard = () => {
                 throw new Error(errData.message || `Upload fail (${res.status})`);
             }
 
-            const publicUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/public/product-images/${filePath}`;
+            const publicUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/public/product-images/${filePath}`;
 
             setSettingsForm(prev => ({ ...prev, logoUrl: publicUrl }));
             toast.success('Logo erfolgreich hochgeladen');
@@ -1747,7 +1759,7 @@ const AdminDashboard = () => {
             const response = await promiseWithTimeout(fetch(targetUrl, {
                 method: isUpdate ? 'PATCH' : 'POST',
                 headers: {
-                    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json',
                     'Prefer': isUpdate ? 'return=minimal' : 'return=representation'
@@ -1779,7 +1791,7 @@ const AdminDashboard = () => {
                 console.log("🔗 Stable category sync for product:", finalId);
                 try {
                     const syncHeaders = {
-                        'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
                         'Authorization': `Bearer ${accessToken}`,
                         'Content-Type': 'application/json'
                     };
@@ -1958,8 +1970,8 @@ const AdminDashboard = () => {
             };
 
             // Use direct REST call for maximum reliability
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-            const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+            const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
             const isEdit = editingItem && editingItem.id;
 
             let url = `${baseUrl}/rest/v1/categories`;
@@ -2036,8 +2048,8 @@ const AdminDashboard = () => {
                 is_active: manufacturerFormData.is_active !== undefined ? manufacturerFormData.is_active : true
             };
 
-            const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-            const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+            const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
             const isEdit = editingItem && editingItem.id;
 
             // 1. Manually retrieve access token from storage to bypass library locks
@@ -2247,7 +2259,7 @@ const AdminDashboard = () => {
 
                     await Promise.race([uploadPromise(), timeoutPromise]);
 
-                    const publicUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/public/product-images/${filePath}`;
+                    const publicUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/public/product-images/${filePath}`;
 
                     console.log(`🔗 Success: ${publicUrl}`);
                     uploadedUrls.push(publicUrl);
@@ -2347,8 +2359,8 @@ const AdminDashboard = () => {
                 const fileName = `${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
                 const filePath = `variants/${fileName}`;
 
-                const baseUrl = process.env.REACT_APP_SUPABASE_URL;
-                const anonKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
+                const baseUrl = 'https://hhnrosczgggxelnbrhlk.supabase.co';
+                const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
                 const url = `${baseUrl}/storage/v1/object/product-images/${filePath}`;
 
                 const res = await fetch(url, {
@@ -2405,12 +2417,12 @@ const AdminDashboard = () => {
             const fileName = `slider-${Math.random().toString(36).substring(2)}-${Date.now()}.${fileExt}`;
             const filePath = `slider/${fileName}`;
             // RAW FETCH UPLOAD (Safari/Network Stability Mode)
-            const uploadUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/product-images/${filePath}`;
+            const uploadUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/product-images/${filePath}`;
             const res = await fetch(uploadUrl, {
                 method: 'POST',
                 headers: {
-                    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
-                    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s'}`,
                     'Content-Type': file.type || 'application/octet-stream',
                     'x-upsert': 'false'
                 },
@@ -2422,7 +2434,7 @@ const AdminDashboard = () => {
                 throw new Error(errData.message || `Upload fail(${res.status})`);
             }
 
-            const publicUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/public/product-images/${filePath}`;
+            const publicUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/public/product-images/${filePath}`;
             const newSlides = [...settingsForm.sliderImages];
             newSlides[index].image = publicUrl;
             setSettingsForm({ ...settingsForm, sliderImages: newSlides });
@@ -2447,18 +2459,18 @@ const AdminDashboard = () => {
 
             // 1. Get session token for storage upload
             const { data: { session: uploadSession } } = await supabase.auth.getSession();
-            const accessToken = uploadSession?.access_token || process.env.REACT_APP_SUPABASE_ANON_KEY;
+            const accessToken = uploadSession?.access_token || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s';
             
             if (!uploadSession) {
                 console.warn("⚠️ No active session for file upload.");
             }
 
             // RAW FETCH UPLOAD (Safari/Network Stability Mode)
-            const uploadUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/product-images/${filePath}`;
+            const uploadUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/product-images/${filePath}`;
             const res = await fetch(uploadUrl, {
                 method: 'POST',
                 headers: {
-                    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY,
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhobnJvc2N6Z2dneGVsbmJyaGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MDM5MDEsImV4cCI6MjA4NjA3OTkwMX0.1U1UNpiwBUPCSiBRlg7r2KayQodJfTWULqO7xgCUq_s',
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': file.type || 'application/octet-stream',
                     'x-upsert': 'false'
@@ -2471,7 +2483,7 @@ const AdminDashboard = () => {
                 throw new Error(errData.message || `Upload fail(${res.status})`);
             }
 
-            const publicUrl = `${process.env.REACT_APP_SUPABASE_URL}/storage/v1/object/public/product-images/${filePath}`;
+            const publicUrl = `${'https://hhnrosczgggxelnbrhlk.supabase.co'}/storage/v1/object/public/product-images/${filePath}`;
 
             setManufacturerFormData(prev => ({ ...prev, [field]: publicUrl }));
             toast.success('Bild erfolgreich hochgeladen');
