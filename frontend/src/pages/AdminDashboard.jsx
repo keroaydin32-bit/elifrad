@@ -85,10 +85,11 @@ const quillStyles = `
   .ql-editor {
     min-height: 400px;
     font-family: inherit;
-    line-height: 1.6;
+    line-height: 1.8;
     padding: 2rem !important;
-    font-size: 1rem;
-    color: #000 !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280 !important;
   }
   .ql-editor h1, .ql-editor h2, .ql-editor h3 {
     margin-top: 1rem !important;
@@ -99,7 +100,7 @@ const quillStyles = `
   .ql-editor h2 { font-size: 1.25rem !important; }
   .ql-editor h3 { font-size: 1.1rem !important; }
   .dark .ql-editor {
-    color: #fff !important;
+    color: #d1d5db !important;
   }
   .ql-editor.ql-blank::before {
     color: #6b7280 !important;

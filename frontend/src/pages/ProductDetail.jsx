@@ -1075,9 +1075,10 @@ const ProductDetail = () => {
         <div className="mt-12 sm:mt-20 space-y-12 overflow-x-hidden w-full">
           {/* 1. Full Width Description */}
           <div className="bg-white dark:bg-[#0a0a0a] rounded-lg p-8 sm:p-12 shadow-xl shadow-gray-200/50 dark:shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/5 overflow-hidden">
-            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-8 uppercase tracking-tight">
+            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-tight">
               Beschreibung
             </h3>
+            <div className="h-1 w-12 bg-red-600 mb-8 rounded-full"></div>
             {(() => {
               const vd = selectedVariant?.description?.trim();
               const isVDEmpty = !vd || vd === '<p><br></p>' || vd === '<p></p>' || vd === '<p>&nbsp;</p>';
