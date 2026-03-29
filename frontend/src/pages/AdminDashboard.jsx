@@ -90,11 +90,30 @@ const quillStyles = `
     font-size: 0.875rem;
     font-weight: 500;
     color: #6b7280 !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+  .ql-editor > * {
+    display: block !important;
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
+  }
+  .ql-editor p, .ql-editor ul, .ql-editor ol, .ql-editor li {
+    display: block !important;
+    margin-bottom: 1.25rem !important;
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
   }
   .ql-editor h1, .ql-editor h2, .ql-editor h3 {
-    margin-top: 1rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
     font-weight: bold !important;
+    display: block !important;
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
   }
   .ql-editor h1 { font-size: 1.5rem !important; }
   .ql-editor h2 { font-size: 1.25rem !important; }
@@ -277,7 +296,7 @@ const quillModules = {
         ['clean']
     ],
     clipboard: {
-        matchVisual: false,
+        matchVisual: true,
     }
 };
 
@@ -617,6 +636,9 @@ const AdminDashboard = () => {
             [{ 'list': 'ordered' }, { 'list': 'bullet' }],
             ['link', 'clean']
         ],
+        clipboard: {
+            matchVisual: true,
+        }
     }), []);
 
     const openLegalEditor = (id, label) => {
@@ -3625,13 +3647,7 @@ const AdminDashboard = () => {
                                             key={`quill-cat-${editingItem?.id || 'new'}-${lastSaveTimestamp}`}
                                             theme="snow"
                                             value={formData.description || ''}
-                                            modules={{
-                                                toolbar: [
-                                                    ['bold', 'italic', 'underline'],
-                                                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                                                    ['link', 'clean']
-                                                ]
-                                            }}
+                                            modules={quillModules}
                                             onChange={(content) => setFormData(prev => ({ ...prev, description: content }))}
                                             placeholder="Schreiben Sie bir Kurzinformation über die Kategorie..."
                                         />
@@ -5544,13 +5560,7 @@ const AdminDashboard = () => {
                                     <ReactQuill
                                         theme="snow"
                                         value={manufacturerFormData.description || ''}
-                                        modules={{
-                                            toolbar: [
-                                                ['bold', 'italic', 'underline'],
-                                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                                                ['link', 'clean']
-                                            ]
-                                        }}
+                                        modules={quillModules}
                                         onChange={(content) => setManufacturerFormData(prev => ({ ...prev, description: content }))}
                                         placeholder="Kurze Beschreibung des Herstellers..."
                                     />
